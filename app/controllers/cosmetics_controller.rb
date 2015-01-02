@@ -69,6 +69,6 @@ class CosmeticsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cosmetic_params
-      params.require(:cosmetic).permit(:Product, :phone, :website)
+      params.require(:cosmetic).permit(:Product, :phone, :website, :image)
     end
 end
