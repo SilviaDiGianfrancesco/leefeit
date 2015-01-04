@@ -1,6 +1,9 @@
 class ReviewsController < ApplicationController
-  before_action :authenticate_user!
   before_action :set_review, only: [:edit, :update, :destroy]
+  before_action :set_cosmetic
+  before_action :authenticate_user!
+  before_action :check_user, only: [:edit, :update, :destroy]
+ 
 
   respond_to :html
 
@@ -17,6 +20,7 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
      @review.user_id = current_user.id
+     @review.cosmetic_id = @cosmetic.id
     @review.save
     respond_with(@review, :location => root_path)
   end
@@ -34,6 +38,10 @@ class ReviewsController < ApplicationController
   private
     def set_review
       @review = Review.find(params[:id])
+    end
+
+    def set_cosmetic
+      @cosmetic = Cosmetic.find(params[:cosmetic_id])
     end
 
     def review_params
