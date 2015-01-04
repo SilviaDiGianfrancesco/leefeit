@@ -13,6 +13,6 @@
   <strong>Website:</strong>
   <%= @cosmetic.website %>
 </p>
-
+<%= link_to "Write Review", new_cosmetic_review_path(@cosmetic), class: "btn btn-primary" %>
 <%= link_to 'Edit', edit_cosmetic_path(@cosmetic), class: "btn btn-link" %> |
 <%= link_to 'Back', cosmetics_path, class: "btn btn-link" %>

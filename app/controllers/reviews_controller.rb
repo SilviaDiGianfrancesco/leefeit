@@ -22,7 +22,8 @@ class ReviewsController < ApplicationController
      @review.user_id = current_user.id
      @review.cosmetic_id = @cosmetic.id
     @review.save
-    respond_with(@review, :location => root_path)
+
+    respond_with(@review, :location => @cosmetic)
   end
 
   def update
