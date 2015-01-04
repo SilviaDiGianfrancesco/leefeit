@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_review, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
@@ -22,6 +23,7 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
+     @review.user_id = current_user.id
     @review.save
     respond_with(@review)
   end
